@@ -1,0 +1,10 @@
+.task-list {
+	max-width: 1280px;
+	margin: 30px auto;
+	min-height: 600px;
+	max-height: 600px;
+	border-radius: 10px;
+	background-color: var(--accent);
+	padding: 30px;
+	overflow-y: auto;
+}

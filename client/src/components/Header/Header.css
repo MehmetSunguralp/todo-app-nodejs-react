@@ -1,0 +1,77 @@
+header {
+	width: 100%;
+	margin-top: 10px;
+}
+.app-title {
+	color: var(--accent);
+	margin-bottom: 20px;
+}
+
+.add-task {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.task-text-content {
+	display: flex;
+	flex-direction: column;
+}
+.title-bar,
+.description-bar {
+	background-color: var(--secondary);
+	text-align: start;
+	outline: none;
+	height: 40px;
+	min-width: 400px;
+	max-width: 400px;
+	border: transparent;
+	padding: 10px;
+	color: var(--accent);
+	transition: all 200ms;
+}
+
+.title-bar:focus,
+.description-bar:focus {
+	background-color: var(--secondaryFocused);
+}
+.title-bar {
+	border-radius: 10px 0 0 0;
+	border-bottom: 4px solid var(--primary);
+	height: 40px;
+	font-size: 20px;
+	font-weight: 600;
+	color: var(--accent);
+}
+.description-bar {
+	border-radius: 0 0 0 10px;
+	font-size: 16px;
+	height: 80px;
+	max-height: fit-content;
+	resize: none;
+}
+
+::placeholder {
+	color: var(--accent);
+	opacity: 1;
+}
+::-ms-input-placeholder {
+	color: var(--accent);
+}
+.add-task-btn {
+	background-color: var(--secondary);
+	height: 164px;
+	width: 40px;
+	border: transparent;
+	border-radius: 0 10px 10px 0;
+	margin-left: 4px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 200ms;
+}
+
+.add-task-btn:hover {
+	background-color: var(--accent);
+}

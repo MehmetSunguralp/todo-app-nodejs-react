@@ -1,0 +1,30 @@
+.task-card {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: var(--primary);
+	padding: 10px 20px;
+	margin-bottom: 14px;
+	border-radius: 10px;
+	min-height: 74px;
+	color: var(--accent);
+	transition: all 200ms;
+}
+
+.task-card:hover {
+	background-color: var(--secondaryFocused);
+}
+.task-content {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+}
+
+.trash-icon {
+	cursor: pointer;
+	transition: all 100ms;
+}
+
+.trash-icon:hover {
+	color: var(--secondary);
+}
