@@ -13,7 +13,6 @@ function Header() {
 		setDescription(e.target.value);
 	};
 
-
 	const addTodo = (e) => {
 		e.preventDefault();
 		if (title) {
@@ -45,7 +44,7 @@ function Header() {
 					/>
 				</div>
 				<button className="add-task-btn" onClick={addTodo}>
-					<IoMdAdd color="#755564" fontSize="2em" />
+					<IoMdAdd color="#755564" fontSize="2em" className="add-icon" />
 				</button>
 			</form>
 		</header>

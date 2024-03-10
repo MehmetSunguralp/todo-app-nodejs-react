@@ -3,8 +3,9 @@ header {
 	margin-top: 10px;
 }
 .app-title {
+	font-size: 50px;
 	color: var(--accent);
-	margin-bottom: 20px;
+	margin-bottom: 0px;
 }
 
 .add-task {
@@ -37,7 +38,7 @@ header {
 }
 .title-bar {
 	border-radius: 10px 0 0 0;
-	border-bottom: 4px solid var(--primary);
+	margin-bottom: 4px;
 	height: 40px;
 	font-size: 20px;
 	font-weight: 600;
@@ -69,9 +70,17 @@ header {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	transition: all 200ms;
+	transition: all 200ms ease-in-out;
 }
 
 .add-task-btn:hover {
 	background-color: var(--accent);
+}
+
+.add-icon {
+	transition: all 200ms ease-in-out;
+}
+
+.add-task-btn:hover > .add-icon {
+	color: var(--primary) !important;
 }
