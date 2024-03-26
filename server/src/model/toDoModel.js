@@ -11,7 +11,7 @@ const toDoSchema = new mongoose.Schema(
 			required: false,
 			trim: true,
 		},
-		completed: {
+		important: {
 			type: Boolean,
 			default: false,
 		},

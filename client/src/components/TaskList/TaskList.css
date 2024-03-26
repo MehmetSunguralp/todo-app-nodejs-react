@@ -6,7 +6,21 @@
 	border-radius: 10px;
 	background-color: var(--accent);
 	padding: 30px;
-	overflow-y: auto;
+	overflow-y: scroll;
+	position: relative;
+}
+/* width */
+::-webkit-scrollbar {
+	width: 6px;
 }
 
+/* Track */
+::-webkit-scrollbar-track {
+	opacity: 0;
+}
 
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: var(--secondaryFocused);
+	border-radius: 20px;
+}

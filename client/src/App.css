@@ -6,17 +6,22 @@
 	text-align: center;
 	font-family: "Poppins", sans-serif;
 	max-height: 100vh;
-	overflow: hidden;
 }
-
+html {
+	margin: 0;
+	padding: 0;
+}
 body {
 	background-image: url("./assets/background.svg");
 	min-height: 100vh;
+	overflow: hidden;
+	margin: -10px 0 0 0;
+	padding: 0;
 }
 
 :root {
-	--primary: #f5f7f9;
-	--secondary: #d3d6de;
-	--secondaryFocused: #e2e4e9;
-	--accent: #755564;
+	--primary: #380c32;
+	--secondary: #fff;
+	--secondaryFocused: #e79f78;
+	--accent: #380c32;
 }

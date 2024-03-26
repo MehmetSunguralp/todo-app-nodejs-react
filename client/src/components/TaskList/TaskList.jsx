@@ -1,27 +1,31 @@
-import "./TaskList.css";
-import TaskCard from "../TaskCard/TaskCard";
-import axios from "axios";
 import { useState, useEffect } from "react";
+import TaskCard from "../TaskCard/TaskCard";
+import { fetchTodos } from "../../Api/Api";
+import "./TaskList.css";
 
 function TaskList() {
 	const [tasks, setTasks] = useState([]);
 
 	const getTasks = async () => {
-		const res = await axios.get("http://localhost:5000/api/todo").then((data) => {
-			setTasks(data.data.data);
-		});
+		try {
+			const { data } = await fetchTodos();
+			setTasks(data.data);
+		} catch (error) {
+			console.error(error);
+		}
 	};
+
 	useEffect(() => {
 		getTasks();
-	}, []);
+	}, [tasks]);
 
 	return (
 		<main className="task-list">
-			<ul>
-				{tasks.map((i) => {
+			<div>
+				{tasks?.map((i) => {
 					return <TaskCard title={i.title} description={i.description} key={i._id} id={i._id} />;
 				})}
-			</ul>
+			</div>
 		</main>
 	);
 }

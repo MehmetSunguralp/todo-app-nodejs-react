@@ -4,7 +4,7 @@ header {
 }
 .app-title {
 	font-size: 50px;
-	color: var(--accent);
+	color: var(--secondary);
 	margin-bottom: 0px;
 }
 
@@ -28,8 +28,9 @@ header {
 	max-width: 400px;
 	border: transparent;
 	padding: 10px;
-	color: var(--accent);
+	color: var(--secondary);
 	transition: all 200ms;
+	box-shadow: inset 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
 }
 
 .title-bar:focus,
@@ -45,6 +46,7 @@ header {
 	color: var(--accent);
 }
 .description-bar {
+	color: var(--accent);
 	border-radius: 0 0 0 10px;
 	font-size: 16px;
 	height: 80px;
@@ -71,10 +73,11 @@ header {
 	align-items: center;
 	justify-content: center;
 	transition: all 200ms ease-in-out;
+	box-shadow: inset 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
 }
 
 .add-task-btn:hover {
-	background-color: var(--accent);
+	background-color: var(--secondaryFocused);
 }
 
 .add-icon {
@@ -83,4 +86,17 @@ header {
 
 .add-task-btn:hover > .add-icon {
 	color: var(--primary) !important;
+}
+
+@media only screen and (max-width: 320px) {
+	.title-bar,
+	.description-bar {
+		height: 40px;
+		min-width: 220px;
+		max-width: 220px;
+	}
+	.add-task-btn {
+		height: 124px;
+		width: 40px;
+	}
 }

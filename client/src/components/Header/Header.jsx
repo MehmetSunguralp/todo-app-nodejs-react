@@ -1,7 +1,7 @@
-import { IoMdAdd } from "react-icons/io";
 import "./Header.css";
+import { IoMdAdd } from "react-icons/io";
 import { useState } from "react";
-import axios from "axios";
+import { createTodo } from "../../Api/Api";
 
 function Header() {
 	const [title, setTitle] = useState("");
@@ -16,16 +16,10 @@ function Header() {
 	const addTodo = (e) => {
 		e.preventDefault();
 		if (title) {
-			axios
-				.post("http://localhost:5000/api/todo", {
-					title: title,
-					description: description,
-				})
-				.then((respone) => console.log(respone.data))
-				.catch((err) => console.error(err));
+			createTodo(title, description);
+			setTitle("");
+			setDescription("");
 		}
-		setTitle("");
-		setDescription("");
 	};
 
 	return (
@@ -36,7 +30,7 @@ function Header() {
 					<input type="text" placeholder="Task Title" onChange={handleTitle} value={title} className="title-bar" maxLength="30" />
 					<textarea
 						type="textarea"
-						placeholder="Task Description"
+						placeholder="Task Description (optional)"
 						onChange={handleDescription}
 						value={description}
 						className="description-bar"
