@@ -1,0 +1,102 @@
+header {
+	width: 100%;
+	margin-top: 10px;
+}
+.app-title {
+	font-size: 50px;
+	color: var(--secondary);
+	margin-bottom: 0px;
+}
+
+.add-task {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.task-text-content {
+	display: flex;
+	flex-direction: column;
+}
+.title-bar,
+.description-bar {
+	background-color: var(--secondary);
+	text-align: start;
+	outline: none;
+	height: 40px;
+	min-width: 400px;
+	max-width: 400px;
+	border: transparent;
+	padding: 10px;
+	color: var(--secondary);
+	transition: all 200ms;
+	box-shadow: inset 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
+}
+
+.title-bar:focus,
+.description-bar:focus {
+	background-color: var(--secondaryFocused);
+}
+.title-bar {
+	border-radius: 10px 0 0 0;
+	margin-bottom: 4px;
+	height: 40px;
+	font-size: 20px;
+	font-weight: 600;
+	color: var(--accent);
+}
+.description-bar {
+	color: var(--accent);
+	border-radius: 0 0 0 10px;
+	font-size: 16px;
+	height: 80px;
+	max-height: fit-content;
+	resize: none;
+}
+
+::placeholder {
+	color: var(--accent);
+	opacity: 1;
+}
+::-ms-input-placeholder {
+	color: var(--accent);
+}
+.add-task-btn {
+	background-color: var(--secondary);
+	height: 164px;
+	width: 40px;
+	border: transparent;
+	border-radius: 0 10px 10px 0;
+	margin-left: 4px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 200ms ease-in-out;
+	box-shadow: inset 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
+}
+
+.add-task-btn:hover {
+	background-color: var(--secondaryFocused);
+}
+
+.add-icon {
+	transition: all 200ms ease-in-out;
+}
+
+.add-task-btn:hover > .add-icon {
+	color: var(--primary) !important;
+}
+
+@media only screen and (max-width: 320px) {
+	.title-bar,
+	.description-bar {
+		height: 40px;
+		min-width: 220px;
+		max-width: 220px;
+	}
+	.add-task-btn {
+		height: 124px;
+		width: 40px;
+	}
+}
