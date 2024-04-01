@@ -5,16 +5,10 @@ import { FaEdit, FaTrashAlt, FaSave } from "react-icons/fa";
 import { MdCancel } from "react-icons/md";
 import "./TaskCard.css";
 
-const deleteTask = (id) => {
-	try {
-		deleteTodo(id);
-	} catch (error) {
-		console.error(error);
-	}
-};
-
+//ReactModal setup
 ReactModal.setAppElement("#root");
 
+//Modal styles
 const customStyles = {
 	content: {
 		top: "50%",
@@ -28,6 +22,7 @@ const customStyles = {
 };
 
 function TaskCard({ title, description, id }) {
+	//Update todo task
 	const updateTodoTask = async () => {
 		try {
 			await updateTodo(editTitle, editDescription, id);
@@ -36,19 +31,17 @@ function TaskCard({ title, description, id }) {
 		}
 	};
 
-	//----------------------------------------------
+	//State of edit modal visibility
 	const [modalVisibility, setModalVisibility] = useState(false);
-	const openModal = () => {
-		setModalVisibility(true);
-	};
 
+	//Updates todo task
 	const saveTodo = () => {
 		updateTodoTask();
 		setModalVisibility(false);
 		setWarnerModalVisibility(false);
 	};
-	const onModalVisibility = () => {};
-	//
+
+	//Todo title and description handlers
 	const [editTitle, setEditTitle] = useState(title);
 	const handleEditTitle = (e) => {
 		setEditTitle(e.target.value);
@@ -57,14 +50,31 @@ function TaskCard({ title, description, id }) {
 	const handleEditDescription = (e) => {
 		setEditDescription(e.target.value);
 	};
-	//Warner modal
+	//State of warner and delete modal visibility
 	const [warnerModalVisibility, setWarnerModalVisibility] = useState(false);
+	const [deleteModalVisibility, setDeleteModalVisibility] = useState(false);
 
-	const closeModal = () => {
-		setWarnerModalVisibility(true);
-		setModalVisibility(false);
+	//Delete task by ID
+	const deleteTaskForSure = (id) => {
+		try {
+			deleteTodo(id);
+		} catch (error) {
+			console.error(error);
+		}
 	};
 
+	const deleteTask = () => {
+		setDeleteModalVisibility(true);
+	};
+
+	//Close edit modal
+	const closeModal = () => {
+		if (title != editTitle || description != editDescription) {
+			setWarnerModalVisibility(true);
+		}
+		setModalVisibility(false);
+	};
+	//Discard changes made
 	const discardChanges = () => {
 		setEditTitle(title);
 		setEditDescription(description);
@@ -78,17 +88,11 @@ function TaskCard({ title, description, id }) {
 				<p>{description}</p>
 			</div>
 			<div>
-				<FaEdit fontSize="1.5em" className="edit-icon" onClick={() => openModal()} />
-				<FaTrashAlt fontSize="1.5em" className="trash-icon" onClick={() => deleteTask(id)} />
+				<FaEdit fontSize="1.5em" className="edit-icon" onClick={() => setModalVisibility(true)} />
+				<FaTrashAlt fontSize="1.5em" className="trash-icon" onClick={() => deleteTask()} />
 			</div>
 
-			<ReactModal
-				isOpen={modalVisibility}
-				onAfterOpen={onModalVisibility}
-				onRequestClose={closeModal}
-				style={customStyles}
-				contentLabel="Edit TODO Modal"
-			>
+			<ReactModal isOpen={modalVisibility} onRequestClose={closeModal} style={customStyles} contentLabel="Edit TODO Modal">
 				<div className="edit-task-modal">
 					<input
 						type="text"
@@ -112,10 +116,27 @@ function TaskCard({ title, description, id }) {
 					<FaSave fontSize="2em" className="save-icon" onClick={() => saveTodo()} />
 				</div>
 			</ReactModal>
-			<ReactModal isOpen={warnerModalVisibility}>
-				<p>Are you sure you want to discard changes?</p>
-				<button onClick={() => discardChanges()}>Discard</button>
-				<button onClick={() => saveTodo()}>Save</button>
+			<ReactModal isOpen={warnerModalVisibility} style={customStyles}>
+				<p>Do you want to discard changes?</p>
+				<div className="buttons">
+					<button className="modal-btn" onClick={() => saveTodo()}>
+						Save
+					</button>
+					<button className="modal-btn" onClick={() => discardChanges()}>
+						Discard
+					</button>
+				</div>
+			</ReactModal>
+			<ReactModal isOpen={deleteModalVisibility} style={customStyles}>
+				<p>Do you really want to delete the task?</p>
+				<div className="buttons">
+					<button className="modal-btn" onClick={() => deleteTaskForSure(id)}>
+						Yes
+					</button>
+					<button className="modal-btn" onClick={() => setDeleteModalVisibility(false)}>
+						No
+					</button>
+				</div>
 			</ReactModal>
 		</div>
 	);

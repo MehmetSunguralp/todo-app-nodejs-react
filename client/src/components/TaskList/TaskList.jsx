@@ -9,7 +9,7 @@ function TaskList() {
 	const getTasks = async () => {
 		try {
 			const { data } = await fetchTodos();
-			setTasks(data.data);
+			setTasks(data.data.reverse());
 		} catch (error) {
 			console.error(error);
 		}

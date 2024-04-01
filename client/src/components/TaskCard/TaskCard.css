@@ -97,6 +97,27 @@
 	margin-bottom: 20px;
 }
 
+.buttons {
+	display: flex;
+	gap: 40px;
+	justify-content: center;
+	margin-top: 20px;
+}
+.modal-btn {
+	padding: 8px 16px;
+	outline: transparent;
+	border: transparent;
+	cursor: pointer;
+	border-radius: 8px;
+	background-color: var(--accent);
+	color: var(--secondary);
+	transition: all 0.1s;
+}
+
+.modal-btn:hover {
+	color: var(--secondaryFocused);
+}
+
 ::placeholder {
 	color: var(--accent);
 	opacity: 1;
